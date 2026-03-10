@@ -239,13 +239,15 @@ display: flex;
 flex-direction: column;
 justify-content: flex-end;
 padding: 5rem 3rem;
-background: linear-gradient(to bottom, transparent 20%, rgba(26,28,34,0.75) 100%);
+background: linear-gradient(to bottom, transparent 25%, rgba(26,28,34,0.92) 55%, rgba(26,28,34,1) 100%);
     }
+/* off-white on effective-ink = 15.35:1 ✓ */
 .hero-right-overlay .hero-stat-number { color: var(--off-white); }
-.hero-right-overlay .hero-stat-label { color: rgba(244,243,240,0.75); }
+/* slate-on-dark on ink = 5.28:1 ✓ */
+.hero-right-overlay .hero-stat-label { color: var(--slate-on-dark); }
 .hero-right-overlay .hero-bottom-rule {
-color: rgba(244,243,240,0.55);
-border-top-color: rgba(244,243,240,0.15);
+color: var(--slate-on-dark);
+border-top-color: rgba(139,143,156,0.3);
     }
 .hero-stat-stack { display: flex; flex-direction: column; gap: 2.5rem; }
 .hero-stat {
@@ -629,7 +631,7 @@ aria-label="Navigation menu"
 <div class="hero-stat-label">AI Portland members</div>
 </div>
 <div class="hero-stat fade-in fade-in-delay-3">
-<div class="hero-stat-number" aria-label="Over 10">10+</div>
+<div class="hero-stat-number">9</div>
 <div class="hero-stat-label">Years in executive leadership</div>
 </div>
 <div class="hero-stat fade-in fade-in-delay-4">
