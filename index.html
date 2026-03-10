@@ -379,6 +379,26 @@ font-size: 0.875rem;
 /* slate-muted on slate-50 = 4.53:1 ✓ */
 color: var(--slate-muted);
     }
+/* Linked speaking cards */
+.speaking-card-linked { transition: background 0.2s; }
+.speaking-card-linked:hover { background: var(--off-white); }
+.speaking-card-link {
+display: block;
+text-decoration: none;
+color: inherit;
+height: 100%;
+padding: 2rem;
+    }
+.speaking-card-linked { padding: 0; }
+.speaking-card-linked .speaking-card-title { transition: color 0.2s; }
+.speaking-card-linked:hover .speaking-card-title { color: var(--accent); }
+.speaking-card-cta {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.06em;
+color: var(--accent);
+margin-top: 0.75rem;
+    }
 .topics-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .topic-pill {
 display: inline-block;
@@ -699,30 +719,42 @@ aria-label="Navigation menu"
           I speak on AI literacy, responsible adoption, and the human side of technology change, for organizations, conferences, and policy audiences. Available for keynotes, panels, workshops, and advisory engagements.
 </p>
 <ul class="speaking-grid fade-in" role="list">
-<li class="speaking-card">
+<li class="speaking-card speaking-card-linked">
+<a class="speaking-card-link" href="https://youtu.be/E2v6sNQO_NI?si=0x0iZD8zmU_uyk7e" target="_blank" rel="noopener noreferrer" aria-label="Watch: A Conversation with Senator Ron Wyden (opens in new tab)">
 <p class="speaking-card-org">AI Portland</p>
-<p class="speaking-card-title">In Conversation with Senator Ron Wyden</p>
+<p class="speaking-card-title">A Conversation with Senator Ron Wyden</p>
 <p class="speaking-card-type">Interview · AI Policy</p>
+<p class="speaking-card-cta" aria-hidden="true">Watch →</p>
+</a>
 </li>
-<li class="speaking-card">
+<li class="speaking-card speaking-card-linked">
+<a class="speaking-card-link" href="https://www.bizjournals.com/portland/news/2024/03/29/table-of-experts-women-voice-generative-ai.html?ana=RSS&s=article_search" target="_blank" rel="noopener noreferrer" aria-label="Read: Table of Experts: Giving Women a Voice in the Age of AI (opens in new tab)">
 <p class="speaking-card-org">Portland Business Journal</p>
-<p class="speaking-card-title">Featured in Oregon AI &amp; the Workplace</p>
-<p class="speaking-card-type">Press Feature · 2024 &amp; 2026</p>
+<p class="speaking-card-title">Table of Experts: Giving Women a Voice in the Age of AI</p>
+<p class="speaking-card-type">Press Feature · March 2024</p>
+<p class="speaking-card-cta" aria-hidden="true">Read →</p>
+</a>
+</li>
+<li class="speaking-card speaking-card-linked">
+<a class="speaking-card-link" href="https://www.bizjournals.com/portland/news/2026/02/03/oregon-ai-osu-roy-haggerty-john-harkness.html?ana=giftarticle&utm_campaign=giftarticle&csrc=6452&gift_article_id=72371" target="_blank" rel="noopener noreferrer" aria-label="Read: How Oregon is Positioning Itself as an AI Hub (opens in new tab)">
+<p class="speaking-card-org">Portland Business Journal</p>
+<p class="speaking-card-title">How Oregon is Positioning Itself as an AI Hub</p>
+<p class="speaking-card-type">Press Feature · February 2026</p>
+<p class="speaking-card-cta" aria-hidden="true">Read →</p>
+</a>
 </li>
 <li class="speaking-card">
 <p class="speaking-card-org">Kruse Way Economic Forum</p>
 <p class="speaking-card-title">The Messy Middle</p>
 <p class="speaking-card-type">Talk · October 2025</p>
 </li>
-<li class="speaking-card">
-<p class="speaking-card-org">International Digital Rights Day</p>
-<p class="speaking-card-title">2024 Digital Rights Day</p>
-<p class="speaking-card-type">Panel · December 2024</p>
-</li>
-<li class="speaking-card">
+<li class="speaking-card speaking-card-linked">
+<a class="speaking-card-link" href="https://vimeo.com/1024921598?fl=pl&fe=cm" target="_blank" rel="noopener noreferrer" aria-label="Watch: Supercharging the Human Element with AI (opens in new tab)">
 <p class="speaking-card-org">DisruptHR</p>
 <p class="speaking-card-title">Supercharging the Human Element with AI</p>
 <p class="speaking-card-type">Talk · August 2024</p>
+<p class="speaking-card-cta" aria-hidden="true">Watch →</p>
+</a>
 </li>
 <li class="speaking-card">
 <p class="speaking-card-org">Oregon Consular Corps</p>
