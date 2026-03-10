@@ -1,12 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Megan Notarte</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Megan Notarte — AI Community Builder &amp; Tech Policy Advocate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--off-white:    #F4F3F0;
+--slate-50:     #ECEDF0;
+--slate-200:    #C8CAD1;
+/* --slate-muted: 4.78:1 on off-white, 4.53:1 on slate-50 — passes AA */
+--slate-muted:  #676B79;
+/* --slate-on-dark: 5.28:1 on ink — passes AA */
+--slate-on-dark:#8B8F9C;
+--slate-600:    #565A66;
+--ink:          #1A1C22;
+--accent:       #3D5A80;
+--rule:         rgba(46,48,56,0.12);
+    }
+html { scroll-behavior: smooth; }
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+html { scroll-behavior: auto; }
+.fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+* { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+body {
+font-family: 'DM Sans', sans-serif;
+background: var(--off-white);
+color: var(--ink);
+font-size: 16px;
+line-height: 1.6;
+-webkit-font-smoothing: antialiased;
+    }
+/* ── SKIP LINK ── */
+.skip-link {
+position: absolute;
+top: -100%;
+left: 1rem;
+z-index: 9999;
+padding: 0.75rem 1.5rem;
+background: var(--ink);
+color: var(--off-white);
+font-size: 0.875rem;
+font-weight: 500;
+text-decoration: none;
+    }
+.skip-link:focus { top: 1rem; }
+/* ── GLOBAL FOCUS STYLES ── */
+:focus-visible {
+outline: 3px solid var(--accent);
+outline-offset: 3px;
+    }
+:focus:not(:focus-visible) { outline: none; }
+/* ── SR-ONLY ── */
+.sr-only {
+position: absolute;
+width: 1px; height: 1px;
+padding: 0; margin: -1px;
+overflow: hidden;
+clip: rect(0,0,0,0);
+white-space: nowrap;
+border: 0;
+    }
+/* ── NAV ── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1.25rem 3rem;
+background: rgba(244, 243, 240, 0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--rule);
+    }
+.nav-name {
+font-size: 0.875rem;
+font-weight: 500;
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: var(--ink);
+text-decoration: none;
+    }
+.nav-links {
+display: flex;
+gap: 2.5rem;
+list-style: none;
+    }
+.nav-links a {
+font-size: 0.8125rem;
+font-weight: 400;
+color: var(--slate-600);
+text-decoration: none;
+letter-spacing: 0.02em;
+transition: color 0.2s;
+padding: 0.25rem 0.125rem;
+    }
+.nav-links a:hover { color: var(--ink); }
+/* Mobile hamburger button */
+.nav-toggle {
+display: none;
+background: none;
+border: none;
+cursor: pointer;
+padding: 0.5rem;
+color: var(--ink);
+line-height: 1;
+    }
+/* Mobile nav drawer */
+.nav-mobile {
+display: none;
+position: fixed;
+inset: 0;
+z-index: 99;
+background: var(--off-white);
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 2.25rem;
+    }
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+font-size: 1.75rem;
+font-weight: 300;
+color: var(--ink);
+text-decoration: none;
+letter-spacing: -0.01em;
+    }
+.nav-mobile a:hover { color: var(--accent); }
+.nav-mobile-close {
+position: absolute;
+top: 1.25rem; right: 1.5rem;
+background: none;
+border: none;
+cursor: pointer;
+font-size: 1.5rem;
+color: var(--ink);
+padding: 0.5rem;
+line-height: 1;
+    }
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: grid;
+grid-template-columns: 1fr 1fr;
+padding-top: 4.5rem;
+    }
+.hero-left {
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 5rem 3rem;
+border-right: 1px solid var(--rule);
+    }
+.hero-eyebrow {
+font-family: 'DM Mono', monospace;
+font-size: 0.75rem;
+font-weight: 400;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+/* accent on off-white = 6.37:1 ✓ */
+color: var(--accent);
+margin-bottom: 1.75rem;
+    }
+.hero-name {
+font-size: clamp(2.75rem, 5vw, 4.5rem);
+font-weight: 300;
+line-height: 1.05;
+letter-spacing: -0.02em;
+color: var(--ink);
+margin-bottom: 1.5rem;
+    }
+.hero-name strong { font-weight: 600; display: block; }
+.hero-desc {
+font-size: 1.125rem;
+font-weight: 300;
+/* slate-600 on off-white = 6.20:1 ✓ */
+color: var(--slate-600);
+line-height: 1.7;
+max-width: 42ch;
+margin-bottom: 3rem;
+    }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+display: inline-block;
+padding: 0.75rem 1.75rem;
+background: var(--ink);
+/* off-white on ink = 15.35:1 ✓ */
+color: var(--off-white);
+font-family: 'DM Sans', sans-serif;
+font-size: 0.875rem;
+font-weight: 500;
+letter-spacing: 0.02em;
+text-decoration: none;
+transition: background 0.2s;
+    }
+/* off-white on accent = 6.37:1 ✓ */
+.btn-primary:hover { background: var(--accent); }
+.btn-ghost {
+display: inline-block;
+padding: 0.75rem 1.75rem;
+/* Use slate-600 border so it's visible */
+border: 1.5px solid var(--slate-600);
+/* slate-600 on off-white = 6.20:1 ✓ */
+color: var(--slate-600);
+font-family: 'DM Sans', sans-serif;
+font-size: 0.875rem;
+font-weight: 500;
+text-decoration: none;
+transition: border-color 0.2s, color 0.2s;
+    }
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+.hero-right {
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 5rem 3rem;
+background: var(--slate-50);
+    }
+.hero-stat-stack { display: flex; flex-direction: column; gap: 2.5rem; }
+.hero-stat {
+border-left: 2px solid var(--accent);
+padding-left: 1.25rem;
+    }
+.hero-stat-number {
+font-size: 2.5rem;
+font-weight: 300;
+letter-spacing: -0.02em;
+line-height: 1;
+color: var(--ink);
+margin-bottom: 0.25rem;
+    }
+/* slate-muted on slate-50 = 4.53:1 ✓ */
+.hero-stat-label {
+font-size: 0.875rem;
+color: var(--slate-muted);
+font-weight: 400;
+    }
+.hero-bottom-rule {
+margin-top: 4rem;
+padding-top: 2rem;
+border-top: 1px solid var(--rule);
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+/* slate-muted on slate-50 = 4.53:1 ✓ */
+color: var(--slate-muted);
+line-height: 1.9;
+    }
+/* ── SECTIONS ── */
+section { padding: 6rem 3rem; border-top: 1px solid var(--rule); }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+/* slate-muted on off-white = 4.78:1 ✓ / on slate-50 = 4.53:1 ✓ */
+.section-label {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(--slate-muted);
+margin-bottom: 3rem;
+    }
+/* ── ABOUT ── */
+#about { background: var(--off-white); }
+.about-grid {
+display: grid;
+grid-template-columns: 2fr 1fr;
+gap: 5rem;
+align-items: start;
+    }
+.about-headline {
+font-size: clamp(1.375rem, 2.5vw, 2rem);
+font-weight: 300;
+line-height: 1.35;
+letter-spacing: -0.01em;
+color: var(--ink);
+margin-bottom: 1.75rem;
+    }
+.about-headline em { font-style: italic; color: var(--accent); }
+.about-body {
+font-size: 1rem;
+color: var(--slate-600);
+line-height: 1.8;
+margin-bottom: 1.25rem;
+    }
+.about-sidebar { padding-top: 0.25rem; }
+.sidebar-block { margin-bottom: 2.5rem; }
+.sidebar-title {
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+color: var(--slate-muted);
+margin-bottom: 0.75rem;
+    }
+.sidebar-list {
+list-style: none;
+font-size: 0.9rem;
+color: var(--slate-600);
+line-height: 1.9;
+    }
+.sidebar-list li::before { content: "→ "; color: var(--accent); font-size: 0.75rem; }
+/* ── SPEAKING ── */
+#speaking { background: var(--slate-50); }
+.speaking-intro {
+font-size: 1.125rem;
+font-weight: 300;
+color: var(--slate-600);
+line-height: 1.7;
+max-width: 60ch;
+margin-bottom: 3.5rem;
+    }
+.speaking-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1px;
+background: var(--rule);
+border: 1px solid var(--rule);
+margin-bottom: 3.5rem;
+    }
+.speaking-card { background: var(--slate-50); padding: 2rem; }
+.speaking-card-org {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 0.5rem;
+    }
+.speaking-card-title {
+font-size: 0.9375rem;
+font-weight: 500;
+color: var(--ink);
+line-height: 1.4;
+margin-bottom: 0.5rem;
+    }
+.speaking-card-type {
+font-size: 0.875rem;
+/* slate-muted on slate-50 = 4.53:1 ✓ */
+color: var(--slate-muted);
+    }
+.topics-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.topic-pill {
+display: inline-block;
+padding: 0.35rem 0.9rem;
+/* slate-600 border/text on slate-50 = 5.88:1 ✓ */
+border: 1.5px solid var(--slate-600);
+font-size: 0.875rem;
+color: var(--slate-600);
+    }
+/* ── WORK ── */
+#work { background: var(--off-white); }
+.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.work-item { padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+.work-item-meta {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(--slate-muted);
+margin-bottom: 0.75rem;
+    }
+.work-item-title { font-size: 1.125rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+.work-item-body { font-size: 0.9rem; color: var(--slate-600); line-height: 1.7; }
+/* ── WRITING ── */
+#writing { background: var(--slate-50); }
+.writing-intro {
+font-size: 1.125rem;
+font-weight: 300;
+color: var(--slate-600);
+max-width: 55ch;
+margin-bottom: 3rem;
+line-height: 1.7;
+    }
+.writing-list { list-style: none; border-top: 1px solid var(--rule); }
+.writing-item {
+display: grid;
+grid-template-columns: 2.5ch 1fr auto;
+align-items: baseline;
+gap: 1.5rem;
+padding: 1.25rem 0.5rem;
+border-bottom: 1px solid var(--rule);
+text-decoration: none;
+color: inherit;
+transition: background 0.15s;
+    }
+.writing-item:hover { background: rgba(61,90,128,0.05); }
+.writing-item:hover .writing-title { color: var(--accent); }
+.writing-num {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+color: var(--slate-muted);
+    }
+.writing-title { font-size: 1rem; font-weight: 400; color: var(--ink); transition: color 0.15s; }
+.writing-pub {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+color: var(--slate-muted);
+white-space: nowrap;
+    }
+/* ── CONTACT ── */
+#contact { background: var(--ink); }
+#contact .section-label { color: var(--slate-on-dark); }
+.contact-headline {
+font-size: clamp(2rem, 4vw, 3.5rem);
+font-weight: 300;
+letter-spacing: -0.02em;
+line-height: 1.1;
+color: var(--off-white);
+margin-bottom: 2rem;
+max-width: 18ch;
+    }
+.contact-headline strong { font-weight: 600; }
+/* slate-on-dark on ink = 5.28:1 ✓ */
+.contact-body {
+font-size: 1rem;
+color: var(--slate-on-dark);
+max-width: 45ch;
+margin-bottom: 3rem;
+line-height: 1.7;
+    }
+.contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+.contact-link {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.75rem 1.5rem;
+border: 1.5px solid var(--slate-on-dark);
+/* off-white on ink = 15.35:1 ✓ */
+color: var(--off-white);
+font-size: 0.875rem;
+font-weight: 500;
+text-decoration: none;
+transition: border-color 0.2s, background 0.2s;
+    }
+.contact-link:hover { border-color: var(--off-white); background: rgba(244,243,240,0.06); }
+.contact-link-arrow { font-size: 0.75rem; opacity: 0.7; }
+/* ── FOOTER ── */
+footer {
+background: var(--ink);
+border-top: 1px solid rgba(255,255,255,0.08);
+padding: 2rem 3rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 0.5rem;
+    }
+.footer-name {
+font-family: 'DM Mono', monospace;
+font-size: 0.7rem;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: var(--slate-on-dark);
+    }
+.footer-note { font-size: 0.8125rem; color: var(--slate-on-dark); }
+/* ── FADE-IN ── */
+.fade-in {
+opacity: 0;
+transform: translateY(16px);
+transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in-delay-5 { transition-delay: 0.5s; }
+/* ── RESPONSIVE ── */
+/* Tablet */
+@media (max-width: 1024px) {
+nav { padding: 1.25rem 2rem; }
+.hero-left, .hero-right { padding: 4rem 2rem; }
+section { padding: 5rem 2rem; }
+.about-grid { gap: 3rem; }
+.speaking-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+/* Small tablet / large phone — stack hero, show hamburger */
+@media (max-width: 768px) {
+.nav-links { display: none; }
+.nav-toggle { display: flex; align-items: center; }
+.hero { grid-template-columns: 1fr; min-height: auto; }
+.hero-left {
+padding: 5.5rem 1.5rem 3rem;
+border-right: none;
+border-bottom: 1px solid var(--rule);
+      }
+.hero-right { padding: 3rem 1.5rem; }
+.hero-stat-stack { flex-direction: row; flex-wrap: wrap; gap: 2rem; }
+.hero-bottom-rule { margin-top: 2.5rem; }
+.about-grid { grid-template-columns: 1fr; gap: 3rem; }
+.work-grid { grid-template-columns: 1fr; gap: 2rem; }
+section { padding: 4rem 1.5rem; }
+footer { padding: 1.5rem 2rem; }
+    }
+/* Mobile */
+@media (max-width: 560px) {
+nav { padding: 1rem 1.25rem; }
+section { padding: 3.5rem 1.25rem; }
+.hero-left { padding: 5rem 1.25rem 2.5rem; }
+.hero-right { padding: 2.5rem 1.25rem; }
+.hero-stat-stack { flex-direction: column; gap: 1.75rem; }
+.hero-cta { flex-direction: column; }
+.btn-primary, .btn-ghost { text-align: center; }
+.speaking-grid { grid-template-columns: 1fr; }
+.writing-item { grid-template-columns: 2.5ch 1fr; }
+.writing-pub { display: none; }
+.contact-links { flex-direction: column; }
+.contact-link { justify-content: space-between; }
+footer { padding: 1.25rem; justify-content: center; text-align: center; }
+    }
+</style>
 </head>
 <body>
-  <!-- Paste your full HTML content here -->
-  <h1>Coming soon</h1>
+<!-- SKIP TO MAIN CONTENT -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- NAVIGATION -->
+<nav role="navigation" aria-label="Main navigation">
+<a class="nav-name" href="#top">Megan Notarte</a>
+<ul class="nav-links" role="list">
+<li><a href="#about">About</a></li>
+<li><a href="#speaking">Speaking</a></li>
+<li><a href="#work">Work</a></li>
+<li><a href="#writing">Writing</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<button
+class="nav-toggle"
+aria-expanded="false"
+aria-controls="nav-mobile"
+aria-label="Open navigation menu"
+>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true" focusable="false">
+<line x1="3" y1="7" x2="21" y2="7"/>
+<line x1="3" y1="12" x2="21" y2="12"/>
+<line x1="3" y1="17" x2="21" y2="17"/>
+</svg>
+</button>
+</nav>
+<!-- MOBILE NAV DRAWER -->
+<div
+id="nav-mobile"
+class="nav-mobile"
+role="dialog"
+aria-modal="true"
+aria-label="Navigation menu"
+>
+<button class="nav-mobile-close" aria-label="Close navigation menu">✕</button>
+<a href="#about">About</a>
+<a href="#speaking">Speaking</a>
+<a href="#work">Work</a>
+<a href="#writing">Writing</a>
+<a href="#contact">Contact</a>
+</div>
+<!-- MAIN -->
+<main id="main-content">
+<!-- HERO -->
+<div class="hero" id="top" role="region" aria-label="Introduction">
+<div class="hero-left">
+<p class="hero-eyebrow fade-in">AI Community Builder · Tech Policy Advocate · Vancouver, WA</p>
+<h1 class="hero-name fade-in fade-in-delay-1">
+          Megan<br>
+<strong>Notarte</strong>
+</h1>
+<p class="hero-desc fade-in fade-in-delay-2">
+          I build communities where people understand AI — and help organizations lead with clarity at the intersection of technology, policy, and people.
+</p>
+<div class="hero-cta fade-in fade-in-delay-3">
+<a href="#contact" class="btn-primary">Get in touch</a>
+<a href="#speaking" class="btn-ghost">Speaking &amp; Advisory</a>
+</div>
+</div>
+<div class="hero-right" role="region" aria-label="Key facts">
+<div class="hero-stat-stack">
+<div class="hero-stat fade-in fade-in-delay-2">
+<div class="hero-stat-number" aria-label="Over 2,500">2,500+</div>
+<div class="hero-stat-label">AI Portland members</div>
+</div>
+<div class="hero-stat fade-in fade-in-delay-3">
+<div class="hero-stat-number" aria-label="Over 10">10+</div>
+<div class="hero-stat-label">Years in executive leadership</div>
+</div>
+<div class="hero-stat fade-in fade-in-delay-4">
+<div class="hero-stat-number">PMP</div>
+<div class="hero-stat-label">Certified Project Management Professional</div>
+</div>
+</div>
+<p class="hero-bottom-rule fade-in fade-in-delay-5">
+          Co-founder, AI Portland · Partner, Cloud Four<br>
+          MS Technology, People &amp; Policy (Northwestern, 2025)
+</p>
+</div>
+</div>
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-heading">
+<div class="section-inner">
+<p class="section-label" aria-hidden="true">About</p>
+<div class="about-grid">
+<div>
+<h2 id="about-heading" class="about-headline fade-in">
+              I help people and organizations find their footing <em>in a world being reshaped by AI.</em>
+</h2>
+<p class="about-body fade-in">
+              In late 2023, I co-founded AI Portland — now one of the Pacific Northwest's most active AI communities, with over 2,500 members. Through monthly events, panels, workshops, and a podcast, we create space for honest, accessible conversation about how generative AI is changing work and life. I've been a featured speaker and panelist on AI literacy in the Portland Business Journal and beyond.
+</p>
+<p class="about-body fade-in">
+              Before that, I spent nearly two decades building things: first as a developer, then as Senior Project Manager, and ultimately as Partner and VP at Cloud Four — a boutique web agency serving enterprise clients like Walmart and Old Navy. I've run hiring, finances, culture, and operations. I've built teams and I've made payroll.
+</p>
+<p class="about-body fade-in">
+              What I'm drawn to now: roles where leadership, community, and technology intersect — Executive Director, Director of AI Community or Developer Relations, or Head of AI Literacy. Places where building something real is the whole job.
+</p>
+</div>
+<div class="about-sidebar">
+<div class="sidebar-block fade-in">
+<p class="sidebar-title">Expertise</p>
+<ul class="sidebar-list">
+<li>AI literacy &amp; responsible adoption</li>
+<li>Community building at scale</li>
+<li>Technology policy &amp; advocacy</li>
+<li>Operations &amp; organizational design</li>
+<li>Cross-functional program leadership</li>
+</ul>
+</div>
+<div class="sidebar-block fade-in">
+<p class="sidebar-title">Education</p>
+<ul class="sidebar-list">
+<li>MS, Technology, People &amp; Policy — Northwestern (2025)</li>
+<li>BA, Spanish &amp; Computer Science — Western Washington University</li>
+<li>Front-end Development Certification</li>
+</ul>
+</div>
+<div class="sidebar-block fade-in">
+<p class="sidebar-title">Based in</p>
+<ul class="sidebar-list">
+<li>Vancouver, WA</li>
+<li>Open to remote &amp; hybrid roles</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SPEAKING -->
+<section id="speaking" aria-labelledby="speaking-heading">
+<div class="section-inner">
+<p class="section-label" aria-hidden="true">Speaking &amp; Advisory</p>
+<h2 id="speaking-heading" class="sr-only">Speaking and Advisory</h2>
+<p class="speaking-intro fade-in">
+          I speak on AI literacy, responsible adoption, and the human side of technology change — for organizations, conferences, and policy audiences. Available for keynotes, panels, workshops, and advisory engagements.
+</p>
+<ul class="speaking-grid fade-in" role="list">
+<li class="speaking-card">
+<p class="speaking-card-org">U.S. Senate</p>
+<p class="speaking-card-title">Senator Wyden's AI Roundtable</p>
+<p class="speaking-card-type">Policy Panel</p>
+</li>
+<li class="speaking-card">
+<p class="speaking-card-org">Portland Business Journal</p>
+<p class="speaking-card-title">Featured: AI Literacy in the Workplace</p>
+<p class="speaking-card-type">Press Feature</p>
+</li>
+<li class="speaking-card">
+<p class="speaking-card-org">AI Portland</p>
+<p class="speaking-card-title">Monthly Community Events</p>
+<p class="speaking-card-type">Emcee &amp; Moderator — avg. 70 attendees</p>
+</li>
+<li class="speaking-card">
+<p class="speaking-card-org">Bureau of Digital</p>
+<p class="speaking-card-title">AI Literacy for Digital Teams</p>
+<p class="speaking-card-type">Workshop</p>
+</li>
+<li class="speaking-card">
+<p class="speaking-card-org">Podcast</p>
+<p class="speaking-card-title">AI Portland Podcast</p>
+<p class="speaking-card-type">Host &amp; Producer</p>
+</li>
+<li class="speaking-card">
+<p class="speaking-card-org">Supercharged LLC</p>
+<p class="speaking-card-title">AI Strategy &amp; Advisory</p>
+<p class="speaking-card-type">Fractional &amp; Consulting</p>
+</li>
+</ul>
+<ul class="topics-row fade-in" role="list" aria-label="Speaking topics">
+<li class="topic-pill">AI Literacy</li>
+<li class="topic-pill">Responsible AI Adoption</li>
+<li class="topic-pill">Tech Policy</li>
+<li class="topic-pill">Future of Work</li>
+<li class="topic-pill">Community Building</li>
+<li class="topic-pill">AI &amp; Equity</li>
+<li class="topic-pill">Organizational Change</li>
+</ul>
+</div>
+</section>
+<!-- WORK -->
+<section id="work" aria-labelledby="work-heading">
+<div class="section-inner">
+<p class="section-label" aria-hidden="true">Selected Work</p>
+<h2 id="work-heading" class="sr-only">Selected Work</h2>
+<div class="work-grid">
+<article class="work-item fade-in">
+<p class="work-item-meta">2023 – Present · Co-founder</p>
+<h3 class="work-item-title">AI Portland</h3>
+<p class="work-item-body">Co-founded and grew one of the Pacific Northwest's most active AI communities to 2,500+ members. Monthly events, workshops, podcast, and a growing voice in regional tech policy. Run through Supercharged LLC with co-founder Nicole Mors.</p>
+</article>
+<article class="work-item fade-in fade-in-delay-1">
+<p class="work-item-meta">2017 – Present · Partner &amp; VP</p>
+<h3 class="work-item-title">Cloud Four</h3>
+<p class="work-item-body">One of four equal partners at a boutique web agency serving enterprise clients including Walmart and Old Navy. Led operations, HR, finance, hiring, and strategic realignment. Grew and managed expert engineering and project management teams.</p>
+</article>
+<article class="work-item fade-in">
+<p class="work-item-meta">2016–2017 · Senior Technical PM</p>
+<h3 class="work-item-title">ModOp</h3>
+<p class="work-item-body">Set project management standards across the US production team at an award-winning digital advertising agency. Led day-to-day technical project management and mentored junior PMs.</p>
+</article>
+<article class="work-item fade-in fade-in-delay-1">
+<p class="work-item-meta">2010–2013 · President</p>
+<h3 class="work-item-title">CW Co-op Preschool</h3>
+<p class="work-item-body">Led a nonprofit serving 100+ families. Managed $100k+ budget, all staff, board meetings, and a 10%+ enrollment increase. Overhauled registration systems and modernized operations.</p>
+</article>
+</div>
+</div>
+</section>
+<!-- WRITING -->
+<section id="writing" aria-labelledby="writing-heading">
+<div class="section-inner">
+<p class="section-label" aria-hidden="true">Writing &amp; Thought Leadership</p>
+<h2 id="writing-heading" class="sr-only">Writing and Thought Leadership</h2>
+<p class="writing-intro fade-in">
+          I write about AI, operations, leadership, and the human side of technology change — on Medium, Substack, and for Cloud Four.
+</p>
+<ul class="writing-list" role="list">
+<li class="fade-in">
+<a class="writing-item" href="https://medium.com/@megnotarte" target="_blank" rel="noopener noreferrer"
+aria-label="Read: In the Messy Middle of AI, It Always Comes Back to People on Medium (opens in new tab)">
+<span class="writing-num" aria-hidden="true">01</span>
+<span class="writing-title">In the Messy Middle of AI, It Always Comes Back to People</span>
+<span class="writing-pub" aria-label="Published on Medium">Medium</span>
+</a>
+</li>
+<li class="fade-in">
+<a class="writing-item" href="https://medium.com/@megnotarte" target="_blank" rel="noopener noreferrer"
+aria-label="Read: My Personal AI Guidelines on Medium (opens in new tab)">
+<span class="writing-num" aria-hidden="true">02</span>
+<span class="writing-title">My Personal AI Guidelines</span>
+<span class="writing-pub" aria-label="Published on Medium">Medium</span>
+</a>
+</li>
+<li class="fade-in">
+<a class="writing-item" href="https://medium.com/@megnotarte" target="_blank" rel="noopener noreferrer"
+aria-label="Read: Embracing the First Pancake on Medium (opens in new tab)">
+<span class="writing-num" aria-hidden="true">03</span>
+<span class="writing-title">Embracing the First Pancake</span>
+<span class="writing-pub" aria-label="Published on Medium">Medium</span>
+</a>
+</li>
+<li class="fade-in">
+<a class="writing-item" href="https://cloudfour.com" target="_blank" rel="noopener noreferrer"
+aria-label="Read: The Priority of Constituencies Needs a Rewrite on Cloud Four (opens in new tab)">
+<span class="writing-num" aria-hidden="true">04</span>
+<span class="writing-title">The Priority of Constituencies Needs a Rewrite</span>
+<span class="writing-pub" aria-label="Published on Cloud Four">Cloud Four</span>
+</a>
+</li>
+<li class="fade-in">
+<a class="writing-item" href="https://cloudfour.com" target="_blank" rel="noopener noreferrer"
+aria-label="Read: ChatGPT Gives Cloud Four (Incorrect) Awards on Cloud Four (opens in new tab)">
+<span class="writing-num" aria-hidden="true">05</span>
+<span class="writing-title">ChatGPT Gives Cloud Four (Incorrect) Awards</span>
+<span class="writing-pub" aria-label="Published on Cloud Four">Cloud Four</span>
+</a>
+</li>
+</ul>
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact" aria-labelledby="contact-heading">
+<div class="section-inner">
+<p class="section-label" aria-hidden="true">Contact</p>
+<h2 id="contact-heading" class="contact-headline fade-in">
+          Let's talk about <strong>what's next.</strong>
+</h2>
+<p class="contact-body fade-in">
+          I'm open to Director and Executive Director roles in AI education, community, and tech policy — and available for speaking engagements and advisory work.
+</p>
+<div class="contact-links fade-in">
+<a href="mailto:megnotarte@gmail.com" class="contact-link" aria-label="Send email to Megan">
+            Email <span class="contact-link-arrow" aria-hidden="true">↗</span>
+</a>
+<a href="https://linkedin.com/in/megannotarte" target="_blank" rel="noopener noreferrer"
+class="contact-link" aria-label="Megan Notarte on LinkedIn (opens in new tab)">
+            LinkedIn <span class="contact-link-arrow" aria-hidden="true">↗</span>
+</a>
+<a href="https://medium.com/@megnotarte" target="_blank" rel="noopener noreferrer"
+class="contact-link" aria-label="Megan Notarte on Medium (opens in new tab)">
+            Medium <span class="contact-link-arrow" aria-hidden="true">↗</span>
+</a>
+<a href="https://aiportland.com" target="_blank" rel="noopener noreferrer"
+class="contact-link" aria-label="AI Portland website (opens in new tab)">
+            AI Portland <span class="contact-link-arrow" aria-hidden="true">↗</span>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer role="contentinfo">
+<span class="footer-name">Megan Notarte</span>
+<span class="footer-note">Vancouver, WA · megnotarte@gmail.com · (503) 442-6717</span>
+</footer>
+<script>
+// ── Fade-in on scroll ──
+const fadeObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+// ── Mobile nav ──
+const toggle    = document.querySelector('.nav-toggle');
+const drawer    = document.getElementById('nav-mobile');
+const closeBtn  = document.querySelector('.nav-mobile-close');
+const mobileLinks = drawer.querySelectorAll('a');
+function openNav() {
+drawer.classList.add('open');
+toggle.setAttribute('aria-expanded', 'true');
+document.body.style.overflow = 'hidden';
+closeBtn.focus();
+    }
+function closeNav() {
+drawer.classList.remove('open');
+toggle.setAttribute('aria-expanded', 'false');
+document.body.style.overflow = '';
+toggle.focus();
+    }
+toggle.addEventListener('click', openNav);
+closeBtn.addEventListener('click', closeNav);
+mobileLinks.forEach(link => link.addEventListener('click', closeNav));
+// Escape to close
+document.addEventListener('keydown', e => {
+if (e.key === 'Escape' && drawer.classList.contains('open')) closeNav();
+    });
+// Focus trap inside open drawer
+drawer.addEventListener('keydown', e => {
+if (!drawer.classList.contains('open') || e.key !== 'Tab') return;
+const focusable = [...drawer.querySelectorAll('button, a')];
+const first = focusable[0];
+const last  = focusable[focusable.length - 1];
+if (e.shiftKey && document.activeElement === first) {
+e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+e.preventDefault(); first.focus();
+      }
+    });
+</script>
 </body>
 </html>
