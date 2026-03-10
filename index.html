@@ -147,7 +147,6 @@ line-height: 1;
     }
 /* ── HERO ── */
 .hero {
-min-height: 100vh;
 display: grid;
 grid-template-columns: 1fr 1fr;
 padding-top: 4.5rem;
@@ -156,7 +155,7 @@ padding-top: 4.5rem;
 display: flex;
 flex-direction: column;
 justify-content: center;
-padding: 5rem 3rem;
+padding: 3.5rem 3rem;
 border-right: 1px solid var(--rule);
     }
 .hero-eyebrow {
@@ -167,7 +166,7 @@ letter-spacing: 0.1em;
 text-transform: uppercase;
 /* accent on off-white = 6.37:1 ✓ */
 color: var(--accent);
-margin-bottom: 1.75rem;
+margin-bottom: 1rem;
     }
 .hero-name {
 font-size: clamp(2.75rem, 5vw, 4.5rem);
@@ -175,7 +174,7 @@ font-weight: 300;
 line-height: 1.05;
 letter-spacing: -0.02em;
 color: var(--ink);
-margin-bottom: 1.5rem;
+margin-bottom: 1rem;
     }
 .hero-name strong { font-weight: 600; display: block; }
 .hero-desc {
@@ -185,7 +184,7 @@ font-weight: 300;
 color: var(--slate-600);
 line-height: 1.7;
 max-width: 42ch;
-margin-bottom: 3rem;
+margin-bottom: 2rem;
     }
 .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-primary {
@@ -231,23 +230,20 @@ height: 100%;
 object-fit: cover;
 object-position: center top;
     }
-.hero-right-overlay {
-flex: 1;
-position: relative;
-z-index: 1;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-padding: 5rem 3rem;
-background: linear-gradient(to bottom, transparent 25%, rgba(26,28,34,0.92) 55%, rgba(26,28,34,1) 100%);
+.hero-stats {
+margin-top: 2rem;
+padding-top: 1.5rem;
+border-top: 1px solid var(--rule);
     }
-/* off-white on effective-ink = 15.35:1 ✓ */
-.hero-right-overlay .hero-stat-number { color: var(--off-white); }
-/* slate-on-dark on ink = 5.28:1 ✓ */
-.hero-right-overlay .hero-stat-label { color: var(--slate-on-dark); }
-.hero-right-overlay .hero-bottom-rule {
-color: var(--slate-on-dark);
-border-top-color: rgba(139,143,156,0.3);
+.hero-stats .hero-stat-stack {
+flex-direction: row;
+gap: 2rem;
+    }
+.hero-left > .hero-bottom-rule {
+margin-top: 0;
+margin-bottom: 1.25rem;
+border-top: none;
+padding-top: 0;
     }
 .hero-stat-stack { display: flex; flex-direction: column; gap: 2.5rem; }
 .hero-stat {
@@ -255,7 +251,7 @@ border-left: 2px solid var(--accent);
 padding-left: 1.25rem;
     }
 .hero-stat-number {
-font-size: 2.5rem;
+font-size: 2rem;
 font-weight: 300;
 letter-spacing: -0.02em;
 line-height: 1;
@@ -289,7 +285,7 @@ overflow: hidden;
 width: 100%;
 height: 100%;
 object-fit: cover;
-object-position: center;
+object-position: center top;
     }
 /* ── SECTIONS ── */
 section { padding: 6rem 3rem; border-top: 1px solid var(--rule); }
@@ -517,7 +513,6 @@ transition: opacity 0.65s ease, transform 0.65s ease;
 @media (max-width: 1024px) {
 nav { padding: 1.25rem 2rem; }
 .hero-left { padding: 4rem 2rem; }
-.hero-right-overlay { padding: 4rem 2rem; }
 .photo-break { height: 400px; }
 section { padding: 5rem 2rem; }
 .about-grid { gap: 3rem; }
@@ -534,7 +529,6 @@ border-right: none;
 border-bottom: 1px solid var(--rule);
       }
 .hero-right { min-height: 420px; }
-.hero-right-overlay { padding: 2.5rem 1.5rem; }
 .hero-stat-stack { flex-direction: row; flex-wrap: wrap; gap: 2rem; }
 .hero-bottom-rule { margin-top: 2.5rem; }
 .photo-break { height: 320px; }
@@ -549,7 +543,6 @@ nav { padding: 1rem 1.25rem; }
 section { padding: 3.5rem 1.25rem; }
 .hero-left { padding: 5rem 1.25rem 2.5rem; }
 .hero-right { min-height: 360px; }
-.hero-right-overlay { padding: 2rem 1.25rem; }
 .photo-break { height: 240px; }
 .hero-stat-stack { flex-direction: column; gap: 1.75rem; }
 .hero-cta { flex-direction: column; }
@@ -614,6 +607,9 @@ aria-label="Navigation menu"
           Megan<br>
 <strong>Notarte</strong>
 </h1>
+<p class="hero-bottom-rule fade-in fade-in-delay-1">
+          Co-founder, AI Portland · Partner, Cloud Four
+</p>
 <p class="hero-desc fade-in fade-in-delay-2">
           I build communities where people understand AI — and help organizations lead with clarity at the intersection of technology, policy, and people.
 </p>
@@ -621,28 +617,25 @@ aria-label="Navigation menu"
 <a href="#contact" class="btn-primary">Get in touch</a>
 <a href="#speaking" class="btn-ghost">Speaking &amp; Advisory</a>
 </div>
-</div>
-<div class="hero-right" role="region" aria-label="Key facts">
-<img src="images/headshot.jpg" alt="Megan Notarte" class="hero-photo" />
-<div class="hero-right-overlay">
+<div class="hero-stats">
 <div class="hero-stat-stack">
-<div class="hero-stat fade-in fade-in-delay-2">
+<div class="hero-stat fade-in fade-in-delay-4">
 <div class="hero-stat-number" aria-label="Over 2,500">2,500+</div>
 <div class="hero-stat-label">AI Portland members</div>
 </div>
-<div class="hero-stat fade-in fade-in-delay-3">
-<div class="hero-stat-number">9</div>
+<div class="hero-stat fade-in fade-in-delay-5">
+<div class="hero-stat-number">12</div>
 <div class="hero-stat-label">Years in executive leadership</div>
 </div>
-<div class="hero-stat fade-in fade-in-delay-4">
+<div class="hero-stat fade-in fade-in-delay-5">
 <div class="hero-stat-number">PMP</div>
 <div class="hero-stat-label">Certified Project Management Professional</div>
 </div>
 </div>
-<p class="hero-bottom-rule fade-in fade-in-delay-5">
-          Co-founder, AI Portland · Partner, Cloud Four
-</p>
 </div>
+</div>
+<div class="hero-right">
+<img src="images/headshot.jpg" alt="Megan Notarte" class="hero-photo" />
 </div>
 </div>
 <!-- ABOUT -->
@@ -695,7 +688,7 @@ aria-label="Navigation menu"
 </section>
 <!-- PHOTO BREAK -->
 <div class="photo-break" role="img" aria-label="Megan Notarte speaking on stage at an AI Portland event">
-<img src="images/speaking.jpg" alt="Megan Notarte on stage at an AI Portland event" loading="lazy" />
+<img src="images/speaking.png" alt="Megan Notarte on stage at an AI Portland event" loading="lazy" />
 </div>
 <!-- SPEAKING -->
 <section id="speaking" aria-labelledby="speaking-heading">
