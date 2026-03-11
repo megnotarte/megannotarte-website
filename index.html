@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/headshot.jpg">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -26,7 +27,6 @@ html { scroll-behavior: smooth; }
 /* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
 html { scroll-behavior: auto; }
-.fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
 * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
 body {
@@ -516,18 +516,7 @@ text-transform: uppercase;
 color: var(--slate-on-dark);
     }
 .footer-note { font-size: 0.8125rem; color: var(--slate-on-dark); }
-/* ── FADE-IN ── */
-.fade-in {
-opacity: 0;
-transform: translateY(16px);
-transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-.fade-in-delay-4 { transition-delay: 0.4s; }
-.fade-in-delay-5 { transition-delay: 0.5s; }
+/* ── FADE-IN (removed — all content visible immediately) ── */
 /* ── RESPONSIVE ── */
 /* Tablet */
 @media (max-width: 1024px) {
@@ -655,7 +644,7 @@ aria-label="Navigation menu"
 </div>
 </div>
 <div class="hero-right">
-<img src="images/headshot.jpg" alt="Megan Notarte" class="hero-photo" />
+<img src="images/headshot.jpg" alt="Megan Notarte" class="hero-photo" fetchpriority="high" />
 </div>
 </div>
 <!-- ABOUT -->
@@ -708,7 +697,7 @@ aria-label="Navigation menu"
 </section>
 <!-- PHOTO BREAK -->
 <div class="photo-break" role="img" aria-label="Megan Notarte speaking on stage at an AI Portland event">
-<img src="images/speaking.png" alt="Megan Notarte on stage at an AI Portland event" loading="lazy" />
+<img src="images/speaking.jpg" alt="Megan Notarte on stage at an AI Portland event" loading="lazy" />
 </div>
 <!-- SPEAKING -->
 <section id="speaking" aria-labelledby="speaking-heading">
@@ -880,16 +869,6 @@ class="contact-link" aria-label="Cloud Four website (opens in new tab)">
 <span class="footer-note">Vancouver, WA · megnotarte@gmail.com</span>
 </footer>
 <script>
-// ── Fade-in on scroll ──
-const fadeObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('visible');
-fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 // ── Mobile nav ──
 const toggle    = document.querySelector('.nav-toggle');
 const drawer    = document.getElementById('nav-mobile');
